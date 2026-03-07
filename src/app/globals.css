@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ═══════════════════════════════
+     ACCURATE LOGO BRAND COLORS
+  ═══════════════════════════════ */
+  --c-black: #050505;
+  --c-dark: #0A0A0A;
+  --c-dark-surface: #FFFFFF;
+  --c-dark-card: #FFFFFF;
+  --c-dark-border: #F1F5F9;
+  --c-white: #0F172A;
+  --c-bg-main: #FFFFFF;
+  
+  /* Branded Accents from Logo Elements */
+  --c-teal: #00C4C4; /* Primary Brand Teal */
+  --c-teal-dark: #008A8A;
+  --c-teal-glow: rgba(0, 196, 196, 0.1);
+  --c-sky: #3B82F6; /* Professional Business Blue */
+  --c-amber: #E08020; /* Primary Brand Amber (The 'H' in LiGHTER) */
+  --c-amber-glow: rgba(224, 128, 32, 0.15);
+  --c-gold: #E0C000;
+  --c-gold-glow: rgba(224, 192, 0, 0.1);
+  --c-navy: #002060;
+  
+  /* Modern Neutral Scale */
+  --c-gray-50: #F8FAFC;
+  --c-gray-100: #F1F5F9;
+  --c-gray-200: #E2E8F0;
+  --c-gray-400: #94A3B8;
+  --c-gray-600: #475569;
+  --c-gray-800: #1E293B;
+
+  /* GRADIENTS - Branded & High-End */
+  --g-hero: linear-gradient(135deg, #F8FAFC 0%, #E0F2F1 100%);
+  --g-consult: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+  --g-travel: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%);
+  --g-cta: linear-gradient(90deg, #E08020 0%, #E0A020 100%); /* Branded Amber Gradient */
+  --g-teal-fade: linear-gradient(180deg, rgba(0, 196, 196, 0.05) 0%, transparent 100%);
+  --g-card: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  --g-section-fade: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+
+  /* SPACING (8px base) */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
+  --s-9: 96px; --s-10: 128px; --s-11: 160px; --s-12: 192px;
+
+  /* BORDER RADIUS */
+  --r-sm: 4px; --r-md: 8px; --r-lg: 16px;
+  --r-xl: 24px; --r-2xl: 40px; --r-full: 9999px;
+
+  /* SHADOWS - High Fidelity */
+  --shadow-teal: 0 10px 30px -10px rgba(0, 196, 196, 0.3);
+  --shadow-amber: 0 15px 35px -5px rgba(224, 128, 32, 0.3);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.04);
+  --shadow-glow-teal: 0 0 40px rgba(0, 196, 196, 0.15);
+  
+  /* TRANSITIONS */
+  --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-black: var(--c-black);
+  --color-dark: var(--c-dark);
+  --color-surface: var(--c-dark-surface);
+  --color-card: var(--c-dark-card);
+  --color-border: var(--c-dark-border);
+  --color-teal: var(--c-teal);
+  --color-teal-dark: var(--c-teal-dark);
+  --color-sky: var(--c-sky);
+  --color-amber: var(--c-amber);
+  --color-gold: var(--c-gold);
+  --color-navy: var(--c-navy);
+
+  --font-display: var(--font-montserrat), "Poppins", sans-serif;
+  --font-body: var(--font-inter), "DM Sans", sans-serif;
+
+  --background-image-hero-gradient: var(--g-hero);
+  --background-image-consult-gradient: var(--g-consult);
+  --background-image-travel-gradient: var(--g-travel);
+  --background-image-cta-gradient: var(--g-cta);
+  
+  --radius-2xl: var(--r-2xl);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-white text-slate-900 font-body antialiased;
+    background-color: #FFFFFF;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-black text-slate-900;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .t-display {
+    font-size: clamp(56px, 7vw, 110px);
+    @apply font-black leading-[0.9] tracking-[-4px] font-display text-slate-900;
+  }
+  .t-h1 {
+    font-size: clamp(40px, 5vw, 72px);
+    @apply font-black leading-[1.05] tracking-[-2px] font-display text-slate-900;
+  }
+  .t-h2 {
+    font-size: clamp(28px, 3.5vw, 48px);
+    @apply font-black leading-[1.1] tracking-[-1px] font-display text-slate-900;
+  }
+  .t-h3 {
+    font-size: clamp(20px, 2vw, 28px);
+    @apply font-bold leading-[1.2] tracking-[-0.5px] font-display text-slate-900;
+  }
+  .t-body-lg {
+    @apply text-[18px] md:text-[20px] leading-[1.7] font-medium font-body text-slate-600;
+  }
+  .t-body {
+    @apply text-[16px] leading-[1.65] font-normal font-body text-slate-500;
+  }
+  .t-label {
+    @apply text-[11px] leading-[1] font-black tracking-[3px] uppercase font-body text-slate-400;
+  }
+  .t-btn {
+    @apply text-[14px] leading-[1] font-black tracking-[1.5px] uppercase font-display transition-all duration-300;
+  }
 }
