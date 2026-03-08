@@ -39,9 +39,9 @@ export const Footer = () => {
         {/* Brand Column */}
         <div className="flex flex-col gap-6">
           <Link href="/" className="flex flex-col">
-            <div className="relative w-32 h-10">
+            <div className="relative w-48 h-12">
               <Image
-                src="/assets/lighter-logo.png"
+                src="/assets/lighter-text-logo.png"
                 alt="LiGHTER"
                 fill
                 className="object-contain"
