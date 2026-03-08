@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { 
   BarChart3, 
@@ -14,37 +12,44 @@ import {
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
+import Link from "next/link";
 
 const industryCases = [
   {
     title: "E-commerce Scale",
     description: "Automated ROI tracking and audience segmentation for retail brands.",
     icon: Target,
+    slug: "ecommerce-scale"
   },
   {
     title: "Real Estate Funnels",
     description: "High-intent lead generation systems for premium property developments.",
     icon: Layout,
+    slug: "real-estate"
   },
   {
     title: "Tech & SaaS Growth",
     description: "Scaling user acquisition through data-led content and performance SEO.",
     icon: Search,
+    slug: "tech-saas"
   },
   {
     title: "Personal Branding",
     description: "Authority building for creators and executives through strategic SMM.",
     icon: PenTool,
+    slug: "personal-branding"
   },
   {
     title: "Business Systems",
     description: "Operationalizing marketing workflows for sustainable brand growth.",
     icon: BarChart3,
+    slug: "business-systems"
   },
   {
     title: "Customer Success",
     description: "Retention-focused engagement strategies to maximize lifetime value.",
     icon: MessageSquare,
+    slug: "customer-success"
   }
 ];
 
@@ -128,8 +133,8 @@ export const ServicesGridConsult = () => {
         {/* Use Case Grid - From Our Services.jpg */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
           {industryCases.map((useCase, i) => (
-            <ScrollReveal key={i} delay={i * 0.1} className="group cursor-default">
-              <div className="flex flex-col gap-6">
+            <ScrollReveal key={i} delay={i * 0.1} className="group">
+              <Link href={`/consult/use-cases/${useCase.slug}`} className="flex flex-col gap-6">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center text-white transition-all duration-500 group-hover:bg-blue-600 group-hover:rotate-6 group-hover:scale-110 shadow-lg">
                     <useCase.icon size={24} />
@@ -144,7 +149,7 @@ export const ServicesGridConsult = () => {
                 <div className="flex items-center gap-2 text-blue-600 text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0">
                   Case Study <ArrowRight size={12} />
                 </div>
-              </div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
