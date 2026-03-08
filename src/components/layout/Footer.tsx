@@ -41,7 +41,7 @@ export const Footer = () => {
           <Link href="/" className="flex flex-col">
             <div className="relative w-48 h-12">
               <Image
-                src="/assets/lighter-text-logo.png"
+                src="/assets/official-logo.png"
                 alt="LiGHTER"
                 fill
                 className="object-contain"
