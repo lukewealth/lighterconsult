@@ -7,10 +7,10 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Okwara Ultimate Campaign",
-    category: "Full-Stack Marketing",
+    title: "Digital Agency Systems",
+    category: "Performance Marketing",
     image: "/assets/portfolio/okwara-1.png",
-    result: "4.5x ROI Achieved",
+    result: "+327% Engagement",
     span: "col-span-1",
     type: "verified"
   },
@@ -27,14 +27,6 @@ const projects = [
     category: "Strategy & Branding",
     image: "/assets/portfolio/flyer-bky.png",
     result: "98% Success Rate",
-    span: "col-span-1",
-    type: "verified"
-  },
-  {
-    title: "Digital Agency Systems",
-    category: "Performance Marketing",
-    image: "/assets/portfolio/flyer-digital.png",
-    result: "+327% Engagement",
     span: "col-span-1",
     type: "verified"
   },

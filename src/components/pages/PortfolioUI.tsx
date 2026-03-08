@@ -9,15 +9,15 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Okwara Ultimate Campaign",
-    category: "Full-Stack Marketing",
+    title: "Digital Agency Systems",
+    category: "Performance Marketing",
     stats: { engagement: "+327%", reach: "1.2M+", roi: "4.5x" },
     image: "/assets/portfolio/okwara-1.png",
-    description: "A comprehensive digital transformation for Okwara Ultimate, focusing on brand authority and lead generation."
+    description: "A comprehensive digital transformation focusing on brand authority, automated systems, and high-performance lead generation."
   },
   {
-    title: "Canada Relocation Series",
-    category: "Immigration Support",
+    title: "Canada Relocation Success",
+    category: "Global Mobility",
     stats: { success: "100%", cases: "150+", time: "5 Months" },
     image: "/assets/travel/canada.png",
     description: "Guidance and processing for a cohort of 150+ professionals successfully relocating to Ontario, Canada."
@@ -28,13 +28,6 @@ const projects = [
     stats: { conversion: "+45%", growth: "3x", retention: "98%" },
     image: "/assets/portfolio/flyer-bky.png",
     description: "Development of the Strategic Growth Blueprint now used by 50+ startups across Nigeria."
-  },
-  {
-    title: "Omni-channel SMM",
-    category: "Social Media",
-    stats: { followers: "10k+", monthly_reach: "500k+", response: "< 2hr" },
-    image: "/assets/portfolio/smm-showcase.png",
-    description: "Ongoing management of multi-platform social presence for leading African creators."
   }
 ];
 
