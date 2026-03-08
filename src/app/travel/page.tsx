@@ -1,5 +1,5 @@
 import { NavbarTravel } from "@/components/layout/NavbarTravel";
-import { FooterTravel } from "@/components/layout/FooterTravel";
+import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { HeroTravel } from "@/components/sections/HeroTravel";
 import { DestinationCards } from "@/components/sections/DestinationCards";
@@ -30,7 +30,7 @@ export default function TravelHomePage() {
         <TestimonialsSectionTravel />
       </div>
       <FinalCTAStripTravel />
-      <FooterTravel />
+      <Footer />
       <WhatsAppFAB />
     </main>
   );

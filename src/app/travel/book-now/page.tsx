@@ -1,5 +1,5 @@
 import { NavbarTravel } from "@/components/layout/NavbarTravel";
-import { FooterTravel } from "@/components/layout/FooterTravel";
+import { Footer } from "@/components/layout/Footer";
 import { BookingForm } from "@/components/sections/BookingSection";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
@@ -41,7 +41,7 @@ export default function TravelBookPage() {
         </div>
       </section>
 
-      <FooterTravel />
+      <Footer />
     </main>
   );
 }

@@ -8,8 +8,8 @@ interface LogoProps {
 }
 
 export const Logo = ({ className, variant = "main" }: LogoProps) => {
-  // Use the new text logo by default for consistency
-  const src = "/assets/lighter-text-logo.png";
+  // Use the new official logo by default
+  const src = "/assets/official-logo.png";
   
   return (
     <Link href="/" className={cn("flex items-center gap-2", className)}>

@@ -3,6 +3,7 @@
 import { Briefcase, Wrench, Plane, GraduationCap, Heart, Home } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Card } from "@/components/ui/Card";
+import Image from "next/image";
 
 const services = [
   {
@@ -11,6 +12,7 @@ const services = [
     timeline: "2–4 weeks",
     icon: Briefcase,
     color: "text-teal",
+    image: "/assets/blueprint/1.png"
   },
   {
     title: "Work Permits",
@@ -19,6 +21,7 @@ const services = [
     icon: Wrench,
     color: "text-amber",
     tag: "HIGH DEMAND",
+    image: "/assets/blueprint/2.png"
   },
   {
     title: "Visit / Tourist Visa",
@@ -26,6 +29,7 @@ const services = [
     timeline: "1–3 weeks",
     icon: Plane,
     color: "text-sky",
+    image: "/assets/blueprint/3.png"
   },
   {
     title: "Study Visa",
@@ -33,6 +37,7 @@ const services = [
     timeline: "4–8 weeks",
     icon: GraduationCap,
     color: "text-gold",
+    image: "/assets/blueprint/4.png"
   },
   {
     title: "Family Reunification",
@@ -40,6 +45,7 @@ const services = [
     timeline: "6–12 weeks",
     icon: Heart,
     color: "text-teal",
+    image: "/assets/blueprint/5.png"
   },
   {
     title: "Relocation Support",
@@ -47,6 +53,7 @@ const services = [
     timeline: "Ongoing",
     icon: Home,
     color: "text-amber",
+    image: "/assets/blueprint/6.png"
   },
 ];
 
@@ -65,26 +72,35 @@ export const ServicesGridTravel = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
-              <Card className="h-full flex flex-col group p-8 bg-[#0A0A0A] border-white/5 hover:border-teal/30">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+              <Card className="h-full flex flex-col group p-0 bg-[#0A0A0A] border-white/5 hover:border-teal/30 overflow-hidden">
+                <div className="h-48 relative overflow-hidden">
+                  <Image 
+                    src={service.image} 
+                    alt={service.title} 
+                    fill 
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+                  <div className="absolute top-6 left-6 w-12 h-12 rounded-lg bg-white/5 backdrop-blur-md flex items-center justify-center transition-transform duration-500 group-hover:scale-110 z-10">
                     <service.icon size={28} className={service.color} />
                   </div>
                   {service.tag && (
-                    <span className="text-[9px] font-black bg-red-600/10 text-red-500 border border-red-600/20 px-2 py-0.5 rounded-full">
+                    <span className="absolute top-6 right-6 z-10 text-[9px] font-black bg-red-600/20 text-red-500 border border-red-600/20 px-2 py-0.5 rounded-full">
                       {service.tag}
                     </span>
                   )}
                 </div>
                 
-                <h3 className="t-h3 text-white mb-4">{service.title}</h3>
-                <p className="t-body text-gray-500 mb-8">
-                  {service.description}
-                </p>
+                <div className="p-8 pt-4 flex flex-col flex-grow">
+                  <h3 className="t-h3 text-white mb-4">{service.title}</h3>
+                  <p className="t-body text-gray-500 mb-8">
+                    {service.description}
+                  </p>
 
-                <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                  <span className="t-label text-gray-600">Timeline</span>
-                  <span className="text-teal font-bold text-sm">{service.timeline}</span>
+                  <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                    <span className="t-label text-gray-600">Timeline</span>
+                    <span className="text-teal font-bold text-sm">{service.timeline}</span>
+                  </div>
                 </div>
               </Card>
             </ScrollReveal>

@@ -3,6 +3,7 @@
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, Phone } from "lucide-react";
+import Image from "next/image";
 
 export const PromotionalFlyers = () => {
   return (
@@ -17,20 +18,36 @@ export const PromotionalFlyers = () => {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-          {/* Main Flyers - Light Modern Style */}
+          {/* Main Flyers - Using assets */}
           <ScrollReveal direction="left">
-            <div className="group relative aspect-[1/1.4] bg-slate-50 rounded-[40px] border border-slate-100 flex items-center justify-center overflow-hidden shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500">
-              <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative z-10 p-12 border-4 border-dashed border-slate-200 rounded-[30px] text-slate-300 text-2xl font-black uppercase tracking-[10px] text-center">
-                CANADA STUDY<br/>OPPORTUNITY
+            <div className="group relative aspect-[1/1.4] bg-slate-50 rounded-[40px] border border-slate-100 overflow-hidden shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500">
+              <Image 
+                src="/assets/travel/canada.png" 
+                alt="Canada Study Opportunity" 
+                fill 
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+              <div className="absolute bottom-8 inset-x-8 z-10">
+                <div className="text-white text-2xl font-black uppercase tracking-widest">
+                  CANADA STUDY<br/>OPPORTUNITY
+                </div>
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.2}>
-            <div className="group relative aspect-[1/1.4] bg-slate-50 rounded-[40px] border border-slate-100 flex items-center justify-center overflow-hidden shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500">
-              <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative z-10 p-12 border-4 border-dashed border-slate-200 rounded-[30px] text-slate-300 text-2xl font-black uppercase tracking-[10px] text-center">
-                AUSTRALIA WORK<br/>PERMIT
+            <div className="group relative aspect-[1/1.4] bg-slate-50 rounded-[40px] border border-slate-100 overflow-hidden shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500">
+              <Image 
+                src="/assets/travel/australia.png" 
+                alt="Australia Work Permit" 
+                fill 
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+              <div className="absolute bottom-8 inset-x-8 z-10">
+                <div className="text-white text-2xl font-black uppercase tracking-widest">
+                  AUSTRALIA WORK<br/>PERMIT
+                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -39,9 +56,17 @@ export const PromotionalFlyers = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[1, 2, 3, 4].map((i) => (
             <ScrollReveal key={i} delay={i * 0.1} direction="scale">
-              <div className="group relative aspect-square bg-slate-50 rounded-[32px] border border-slate-100 flex items-center justify-center text-slate-200 font-black text-6xl shadow-sm hover:shadow-xl hover:shadow-blue-100 hover:bg-white transition-all duration-500">
-                <div className="relative z-10">{i}</div>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="group relative aspect-square bg-slate-50 rounded-[32px] border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-blue-100 transition-all duration-500">
+                <Image 
+                  src={`/assets/blueprint/${i}.png`} 
+                  alt={`Success Guide ${i}`} 
+                  fill 
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-colors" />
+                <div className="absolute top-4 left-4 z-10 w-8 h-8 rounded-full bg-white flex items-center justify-center text-blue-600 font-black shadow-lg">
+                  {i}
+                </div>
               </div>
             </ScrollReveal>
           ))}
@@ -51,7 +76,7 @@ export const PromotionalFlyers = () => {
           <ScrollReveal>
             <h3 className="t-h3 text-slate-900 mb-10 uppercase tracking-[4px] font-black italic font-serif">Apply Visa Today — <span className="text-blue-600">TRAVEL IN 3/6 MONTHS</span></h3>
             <div className="flex flex-wrap justify-center gap-6">
-              <Button variant="primary" size="lg" className="rounded-2xl px-12 bg-blue-600 text-white shadow-xl shadow-blue-100 font-black group">
+              <Button href="/travel/book-now" variant="primary" size="lg" className="rounded-2xl px-12 bg-blue-600 text-white shadow-xl shadow-blue-100 font-black group">
                 <span className="flex items-center gap-2">
                   Book Now <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </span>

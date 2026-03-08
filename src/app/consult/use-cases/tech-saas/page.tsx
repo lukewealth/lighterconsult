@@ -1,5 +1,5 @@
 import { NavbarConsult } from "@/components/layout/NavbarConsult";
-import { FooterConsult } from "@/components/layout/FooterConsult";
+import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { FinalCTAStripConsult } from "@/components/sections/FinalCTAStripConsult";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -143,7 +143,7 @@ export default function TechSaaSGrowthPage() {
       </section>
 
       <FinalCTAStripConsult />
-      <FooterConsult />
+      <Footer />
       <WhatsAppFAB />
     </main>
   );

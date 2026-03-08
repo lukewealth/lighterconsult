@@ -1,5 +1,5 @@
 import { NavbarConsult } from "@/components/layout/NavbarConsult";
-import { FooterConsult } from "@/components/layout/FooterConsult";
+import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { HeroConsult } from "@/components/sections/HeroConsult";
 import { SocialProofMarquee } from "@/components/sections/SocialProofMarquee";
@@ -28,7 +28,7 @@ export default function ConsultHomePage() {
         <TestimonialsSection />
       </div>
       <FinalCTAStripConsult />
-      <FooterConsult />
+      <Footer />
       <WhatsAppFAB />
     </main>
   );

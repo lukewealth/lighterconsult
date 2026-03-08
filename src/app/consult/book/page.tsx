@@ -1,5 +1,5 @@
 import { NavbarConsult } from "@/components/layout/NavbarConsult";
-import { FooterConsult } from "@/components/layout/FooterConsult";
+import { Footer } from "@/components/layout/Footer";
 import { BookingForm } from "@/components/sections/BookingSection";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
@@ -40,7 +40,7 @@ export default function ConsultBookPage() {
         </div>
       </section>
 
-      <FooterConsult />
+      <Footer />
     </main>
   );
 }
