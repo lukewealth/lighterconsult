@@ -29,7 +29,7 @@ export const BookingForm = ({ type }: BookingFormProps) => {
       <div className="flex justify-between items-center mb-12">
         <div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-            {type === "consult" ? "Free Strategy Call" : "Check Eligibility"}
+            {type === "consult" ? "Free Strategy Call" : "Start Your Process"}
           </h2>
           <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">
             {type === "consult" ? "Engineering ROI since 2026" : "Start your global journey today"}
@@ -58,7 +58,7 @@ export const BookingForm = ({ type }: BookingFormProps) => {
                 <div className="grid grid-cols-1 gap-3">
                   {(type === "consult" 
                     ? ["Scale E-commerce ROI", "Build Brand Authority", "Lead Generation Pipeline", "Content Engineering"]
-                    : ["Study in Canada/UK", "Work Permit Pathways", "Permanent Residency", "Business Relocation"]
+                    : ["STUDY", "Work Permit Pathways", "Permanent Residency", "Business Relocation"]
                   ).map((opt) => (
                     <button
                       key={opt}
