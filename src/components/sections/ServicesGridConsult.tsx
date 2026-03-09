@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   BarChart3, 
   Target, 
@@ -15,6 +15,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const industryCases = [
   {
@@ -55,6 +56,30 @@ const industryCases = [
   }
 ];
 
+const clientCases = [
+  {
+    tag: "PERFORMANCE",
+    title: "Performance Marketing Strategy System",
+    description: "Custom-built performance systems for African brands aiming for global scale. Optimized for high conversion and low acquisition costs.",
+    price: "$63",
+    label: "Starting package"
+  },
+  {
+    tag: "TRAVEL",
+    title: "Global Mobility & Travel Guide",
+    description: "Strategic relocation frameworks for professionals. 150+ successful cases processed with high-precision documentation systems.",
+    price: "$120",
+    label: "Consultation fee"
+  },
+  {
+    tag: "MEDIA",
+    title: "Premium Media Coverage & PR",
+    description: "Authority building through tier-1 media placements. Positioning brands as industry leaders across digital and print publications.",
+    price: "$450",
+    label: "Placement base"
+  }
+];
+
 // Static heights for the graph to prevent hydration mismatch
 const graphHeights = [
   "32%", "45%", "28%", "65%", "80%", "42%", "55%", "90%", "35%", "48%",
@@ -62,6 +87,15 @@ const graphHeights = [
 ];
 
 export const ServicesGridConsult = () => {
+  const [currentCase, setCurrentCase] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentCase((prev) => (prev + 1) % clientCases.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="bg-white py-24 md:py-32 px-6 overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
@@ -83,7 +117,7 @@ export const ServicesGridConsult = () => {
         {/* Featured Case Card - From Our Services.jpg */}
         <div className="relative mb-32">
           <ScrollReveal direction="up">
-            <div className="relative w-full aspect-[21/9] min-h-[400px] rounded-[60px] overflow-hidden group">
+            <div className="relative w-full aspect-[21/9] min-h-[450px] rounded-[60px] overflow-hidden group">
               <Image 
                 src="/assets/hero/smm.png" 
                 alt="Digital Excellence" 
@@ -92,49 +126,55 @@ export const ServicesGridConsult = () => {
               />
               <div className="absolute inset-0 bg-blue-600/10" />
               
-              {/* The White Overlay Card from Sample */}
-              <div className="absolute inset-0 flex items-center justify-center p-6">
-                <motion.div 
-                  initial={{ y: 40, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  animate={{ 
-                    y: [0, -15, 0],
-                  }}
-                  transition={{ 
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="bg-white p-8 md:p-12 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] max-w-[500px] w-full border border-slate-50"
-                >
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="t-label text-blue-600 tracking-[4px]">CLIENT CASE</span>
-                    <ChevronRight size={20} className="text-slate-300" />
-                  </div>
-                  <h3 className="t-h2 text-slate-900 mb-4 font-black">Performance Marketing Strategy System</h3>
-                  <p className="text-slate-500 text-sm mb-8 leading-relaxed">
-                    Custom-built performance systems for African brands aiming for global scale. Optimized for high conversion and low acquisition costs.
-                  </p>
-                  
-                  <div className="flex items-end justify-between pt-8 border-t border-slate-100">
-                    <div>
-                      <span className="text-4xl font-black text-slate-900">$63</span>
-                      <span className="text-xs font-bold text-slate-400 ml-2">/Starting package</span>
+              {/* Animated Carousel Card */}
+              <div className="absolute inset-0 flex items-center justify-center p-6 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div 
+                    key={currentCase}
+                    initial={{ x: 300, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -300, opacity: 0 }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 30,
+                      opacity: { duration: 0.4 }
+                    }}
+                    className="bg-white p-8 md:p-12 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] max-w-[500px] w-full border border-slate-50"
+                  >
+                    <div className="flex justify-between items-center mb-6">
+                      <span className="t-label text-blue-600 tracking-[4px]">CLIENT CASE · {clientCases[currentCase].tag}</span>
+                      <div className="flex gap-1">
+                        {clientCases.map((_, i) => (
+                          <div key={i} className={`w-1.5 h-1.5 rounded-full transition-colors ${i === currentCase ? 'bg-blue-600' : 'bg-slate-200'}`} />
+                        ))}
+                      </div>
                     </div>
-                    <Button href="/consult/book" variant="primary" className="rounded-full bg-slate-900 text-white font-black px-10 py-6 text-xs uppercase tracking-widest hover:bg-blue-600 border-none transition-all">
-                      Send Request
-                    </Button>
-                  </div>
+                    <h3 className="t-h2 text-slate-900 mb-4 font-black">{clientCases[currentCase].title}</h3>
+                    <p className="text-slate-500 text-sm mb-8 leading-relaxed">
+                      {clientCases[currentCase].description}
+                    </p>
+                    
+                    <div className="flex items-end justify-between pt-8 border-t border-slate-100">
+                      <div>
+                        <span className="text-4xl font-black text-slate-900">{clientCases[currentCase].price}</span>
+                        <span className="text-xs font-bold text-slate-400 ml-2">/{clientCases[currentCase].label}</span>
+                      </div>
+                      <Button href="/consult/book" variant="primary" className="rounded-full bg-slate-900 text-white font-black px-10 py-6 text-xs uppercase tracking-widest hover:bg-blue-600 border-none transition-all">
+                        Send Request
+                      </Button>
+                    </div>
 
-                  {/* Graph Visual Mockup - Fixed with static heights */}
-                  <div className="mt-8 h-12 w-full relative opacity-20">
-                    <div className="absolute inset-0 flex items-end gap-1">
-                      {graphHeights.map((height, i) => (
-                        <div key={i} className="flex-1 bg-blue-600 rounded-t-sm" style={{ height }} />
-                      ))}
+                    {/* Graph Visual Mockup */}
+                    <div className="mt-8 h-12 w-full relative opacity-20">
+                      <div className="absolute inset-0 flex items-end gap-1">
+                        {graphHeights.map((height, i) => (
+                          <div key={i} className="flex-1 bg-blue-600 rounded-t-sm" style={{ height }} />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </ScrollReveal>
