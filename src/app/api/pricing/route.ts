@@ -1,23 +1,31 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.Resend_API);
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { email, company, product, plan, price } = data;
+    const { email, company, product, plan, price, currency } = data;
 
-    // 1. Log or Send to Admin (lighterconsult@gmail.com)
-    console.log('--- NEW SMM PLAN INQUIRY ---');
-    console.log(`Plan: ${plan}`);
-    console.log(`Price: $${price}`);
-    console.log(`User: ${email}`);
-    console.log(`Company: ${company}`);
-    console.log(`Details: ${product}`);
-    console.log('---------------------------');
+    const currencySymbol = currency === 'NGN' ? '₦' : '$';
 
-    // 2. Prepare the Auto-Response HTML Email
-    // const paymentLink = `https://paystack.com/pay/lighter-smm?email=${email}&amount=${price.replace(',', '')}&plan=${plan}`;
-    
-    /*
+    // 1. Send to Admin
+    await resend.emails.send({
+      from: 'LiGHTER System <system@lighter.online>',
+      to: 'lighterconsult@gmail.com',
+      subject: `New SMM Inquiry: ${plan} Plan from ${company}`,
+      html: `
+        <h2>New Inquiry Received</h2>
+        <p><strong>Company:</strong> ${company}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Plan:</strong> ${plan}</p>
+        <p><strong>Price:</strong> ${currencySymbol}${price}</p>
+        <p><strong>Product Details:</strong> ${product}</p>
+      `
+    });
+
+    // 2. Send Auto-Reply to User
     const emailHtml = `
       <!DOCTYPE html>
       <html>
@@ -32,7 +40,6 @@ export async function POST(req: Request) {
           .price { font-size: 32px; font-weight: 900; color: #0f172a; }
           .details { margin-top: 12px; font-size: 14px; color: #64748b; }
           .account-details { background: #0f172a; color: white; padding: 24px; border-radius: 16px; margin: 24px 0; }
-          .button { display: inline-block; background: #3b82f6; color: white !important; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; margin-top: 24px; }
           .footer { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 40px; border-top: 1px solid #f0f0f0; padding-top: 20px; }
         </style>
       </head>
@@ -46,24 +53,19 @@ export async function POST(req: Request) {
             <p>Thank you for choosing <strong>LiGHTER CONSULT</strong> for your Social Media Management. We have received your request for the <strong>${plan} Plan</strong>.</p>
             
             <div class="plan-box">
-              <div class="price">$${price}<span style="font-size: 14px; font-weight: 400;">/month</span></div>
+              <div class="price">${currencySymbol}${price}<span style="font-size: 14px; font-weight: 400;">/month</span></div>
               <div class="details">Strategic SMM for ${product}</div>
             </div>
 
-            <p>To finalize your onboarding and secure your slot for the 2026 cycle, please proceed with payment using the link below or via bank transfer.</p>
+            <p>Our team is reviewing your details and will contact you within 4 hours to begin the brand audit and finalize onboarding.</p>
             
-            <a href="${paymentLink}" class="button">PROCEED TO SECURE PAYMENT</a>
-
             <div class="account-details">
-              <h4 style="margin-top: 0; color: #3b82f6;">BANK TRANSFER DETAILS</h4>
-              <p style="margin: 4px 0;"><strong>Bank:</strong> LiGHTER Global Treasury (Digital)</p>
-              <p style="margin: 4px 0;"><strong>Account Name:</strong> LiGHTER DIGITAL SOLUTIONS</p>
-              <p style="margin: 4px 0;"><strong>Account Number:</strong> 1234567890</p>
-              <p style="margin: 4px 0;"><strong>Swift Code:</strong> LIGHTNGXXX</p>
-              <p style="margin: 12px 0 0 0; font-size: 11px; opacity: 0.7;">Please use "SMM-${plan}-${company}" as payment reference.</p>
+              <h4 style="margin-top: 0; color: #3b82f6;">OFFICIAL PAYMENT CHANNELS</h4>
+              <p style="margin: 4px 0;">A secure payment link will be sent to this email address shortly.</p>
+              <p style="margin: 12px 0 0 0; font-size: 11px; opacity: 0.7;">Reference: SMM-${plan}-${company.substring(0,3).toUpperCase()}</p>
             </div>
 
-            <p>Once payment is confirmed, your dedicated strategist will contact you within 4 hours to begin the brand audit.</p>
+            <p>We look forward to sparking your growth!</p>
           </div>
           <div class="footer">
             <p>LiGHTER DIGITAL HQ: KM 34, Lekki-Epe Expressway, Lekki, Lagos, Nigeria</p>
@@ -73,13 +75,17 @@ export async function POST(req: Request) {
       </body>
       </html>
     `;
-    */
 
-    // In a real production app, you would use a service like Resend or SendGrid here:
-    // await resend.emails.send({ from: 'LiGHTER <onboarding@lighter.online>', to: email, subject: '...', html: emailHtml });
+    await resend.emails.send({
+      from: 'LiGHTER CONSULT <onboarding@lighter.online>',
+      to: email,
+      subject: `Your LiGHTER CONSULT Quote - ${plan} Plan`,
+      html: emailHtml
+    });
 
     return NextResponse.json({ success: true, message: 'Inquiry processed successfully' });
-  } catch {
+  } catch (error: any) {
+    console.error('Error sending email:', error);
     return NextResponse.json({ success: false, error: 'Failed to process inquiry' }, { status: 500 });
   }
 }
