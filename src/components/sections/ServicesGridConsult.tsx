@@ -101,13 +101,9 @@ export const ServicesGridConsult = () => {
                     y: [0, -15, 0],
                   }}
                   transition={{ 
-                    y: {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    },
-                    initial: { duration: 0.6 },
-                    whileInView: { duration: 0.6 }
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                   className="bg-white p-8 md:p-12 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] max-w-[500px] w-full border border-slate-50"
                 >

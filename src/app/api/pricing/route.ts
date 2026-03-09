@@ -1,5 +1,6 @@
 import { Resend } from 'resend';
 import { PricingEmail } from '@/components/emails/PricingEmail';
+import * as React from 'react';
 
 export async function POST(req: Request) {
   try {
@@ -29,12 +30,12 @@ export async function POST(req: Request) {
       from: 'LiGHTER CONSULT <onboarding@lighter.online>',
       to: [email],
       subject: `Your LiGHTER CONSULT Quote - ${plan} Plan`,
-      react: PricingEmail({ 
-        company, 
-        plan, 
-        price, 
-        currencySymbol, 
-        product 
+      react: React.createElement(PricingEmail, {
+        company,
+        plan,
+        price,
+        currencySymbol,
+        product
       }),
     });
 
