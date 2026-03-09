@@ -23,6 +23,7 @@ const mainServices = [
     icon: Zap,
     color: "text-blue-600",
     bg: "bg-blue-50",
+    image: "/assets/hero/smm.png",
     href: "/consult",
     useCases: [
       "E-commerce scaling through Meta Ads",
@@ -39,6 +40,7 @@ const mainServices = [
     icon: Globe,
     color: "text-amber-600",
     bg: "bg-amber-50",
+    image: "/assets/travel/hero-world.png",
     href: "/travel",
     useCases: [
       "Study permits for top universities",
@@ -123,10 +125,13 @@ export const ServicesUI = () => {
 
               <ScrollReveal direction={i % 2 === 0 ? "right" : "left"} className="relative">
                 <div className="aspect-square bg-slate-100 rounded-[60px] overflow-hidden relative shadow-2xl shadow-blue-100 border-[12px] border-white group">
+                   <Image 
+                     src={service.image} 
+                     alt={service.title} 
+                     fill 
+                     className="object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                   />
                    <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-colors duration-500" />
-                   <div className="w-full h-full flex items-center justify-center text-slate-200 text-4xl font-black uppercase tracking-widest">
-                     {service.id === 'consult' ? 'Marketing' : 'Immigration'}
-                   </div>
                 </div>
                 {/* Floating Insight Card */}
                 <motion.div 
