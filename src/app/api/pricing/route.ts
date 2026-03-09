@@ -1,12 +1,11 @@
-import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { PricingEmail } from '@/components/emails/PricingEmail';
 
 export async function POST(req: Request) {
   try {
     const resend = new Resend(process.env.Resend_API);
-    const data = await req.json();
-    const { email, company, product, plan, price, currency } = data;
+    const body = await req.json();
+    const { email, company, product, plan, price, currency } = body;
 
     const currencySymbol = currency === 'NGN' ? '₦' : '$';
 
@@ -25,10 +24,10 @@ export async function POST(req: Request) {
       `
     });
 
-    // 2. Send Auto-Reply to User (using React Template)
-    await resend.emails.send({
+    // 2. Send Auto-Reply to User
+    const { data, error } = await resend.emails.send({
       from: 'LiGHTER CONSULT <onboarding@lighter.online>',
-      to: email,
+      to: [email],
       subject: `Your LiGHTER CONSULT Quote - ${plan} Plan`,
       react: PricingEmail({ 
         company, 
@@ -39,9 +38,12 @@ export async function POST(req: Request) {
       }),
     });
 
-    return NextResponse.json({ success: true, message: 'Inquiry processed successfully' });
-  } catch (error: unknown) {
-    console.error('Error sending email:', error);
-    return NextResponse.json({ success: false, error: 'Failed to process inquiry' }, { status: 500 });
+    if (error) {
+      return Response.json({ error }, { status: 500 });
+    }
+
+    return Response.json(data);
+  } catch (error) {
+    return Response.json({ error }, { status: 500 });
   }
 }
