@@ -97,6 +97,18 @@ export const ServicesGridConsult = () => {
                 <motion.div 
                   initial={{ y: 40, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
+                  animate={{ 
+                    y: [0, -15, 0],
+                  }}
+                  transition={{ 
+                    y: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    },
+                    initial: { duration: 0.6 },
+                    whileInView: { duration: 0.6 }
+                  }}
                   className="bg-white p-8 md:p-12 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] max-w-[500px] w-full border border-slate-50"
                 >
                   <div className="flex justify-between items-center mb-6">
@@ -113,7 +125,7 @@ export const ServicesGridConsult = () => {
                       <span className="text-4xl font-black text-slate-900">$63</span>
                       <span className="text-xs font-bold text-slate-400 ml-2">/Starting package</span>
                     </div>
-                    <Button variant="primary" className="rounded-full bg-slate-900 text-white font-black px-10 py-6 text-xs uppercase tracking-widest hover:bg-blue-600 border-none transition-all">
+                    <Button href="/consult/book" variant="primary" className="rounded-full bg-slate-900 text-white font-black px-10 py-6 text-xs uppercase tracking-widest hover:bg-blue-600 border-none transition-all">
                       Send Request
                     </Button>
                   </div>
