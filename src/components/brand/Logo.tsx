@@ -4,10 +4,9 @@ import { cn } from "@/lib/utils";
 
 interface LogoProps {
   className?: string;
-  variant?: "main" | "text";
 }
 
-export const Logo = ({ className, variant = "main" }: LogoProps) => {
+export const Logo = ({ className }: LogoProps) => {
   // Use the new official logo by default
   const src = "/assets/official-logo.png";
   

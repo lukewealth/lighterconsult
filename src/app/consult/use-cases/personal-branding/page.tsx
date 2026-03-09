@@ -4,7 +4,7 @@ import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { FinalCTAStripConsult } from "@/components/sections/FinalCTAStripConsult";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
-import { UserCheck, Star, Share2, Award, ShieldCheck, ArrowRight } from "lucide-react";
+import { UserCheck, Star, Share2, Award, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 

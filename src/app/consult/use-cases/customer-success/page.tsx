@@ -6,7 +6,6 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { Heart, RefreshCw, BarChart, Smile, ShieldCheck, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Customer Success Use Case",

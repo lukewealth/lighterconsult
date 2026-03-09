@@ -83,7 +83,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true, message: 'Inquiry processed successfully' });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error sending email:', error);
     return NextResponse.json({ success: false, error: 'Failed to process inquiry' }, { status: 500 });
   }
