@@ -128,7 +128,7 @@ const nigeriaPlans = [
 ];
 
 export const PricingSection = () => {
-  const [region, setRegion] = useState<'International' | 'Nigeria'>('International');
+  const [region, setRegion] = useState<'International' | 'Nigeria'>('Nigeria');
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<typeof globalPlans[0] | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -185,7 +185,7 @@ export const PricingSection = () => {
                   region === 'Nigeria' ? "text-white" : "text-slate-400 hover:text-slate-600"
                 )}
               >
-                NIGERIA
+                NIGERIA PLAN
               </button>
               <button 
                 onClick={() => setRegion('International')}
@@ -194,7 +194,7 @@ export const PricingSection = () => {
                   region === 'International' ? "text-white" : "text-slate-400 hover:text-slate-600"
                 )}
               >
-                INTERNATIONAL
+                INTERNATIONAL PLAN
               </button>
               <motion.div 
                 className="absolute top-1 bottom-1 bg-blue-600 rounded-xl shadow-lg shadow-blue-100"
