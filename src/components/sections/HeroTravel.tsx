@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, Calendar, Users, Globe, ArrowRight } from "lucide-react";
+import { Play, Calendar, Users, Globe, ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Image from "next/image";
+import Link from "next/link";
 
 export const HeroTravel = () => {
   return (
@@ -81,31 +82,41 @@ export const HeroTravel = () => {
           {/* Quick Booking Interface from Sample */}
           <div className="bg-slate-50 p-8 rounded-[40px] border border-slate-100 shadow-sm space-y-8 mt-4">
             <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <p className="t-label text-[10px] text-slate-400">Destination</p>
-                <div className="flex items-center gap-3 text-slate-900 font-bold border-b border-slate-200 pb-2">
-                  <Globe size={18} className="text-blue-600" />
-                  <span>Select Country</span>
+              <Link href="/travel/book-now" className="group/item">
+                <div className="space-y-3">
+                  <p className="t-label text-[10px] text-slate-400 group-hover/item:text-blue-600 transition-colors uppercase font-bold tracking-widest">Destination</p>
+                  <div className="flex items-center justify-between text-slate-900 font-bold border-b border-slate-200 pb-2 group-hover/item:border-blue-600 transition-all">
+                    <div className="flex items-center gap-3">
+                      <Globe size={18} className="text-blue-600" />
+                      <span className="text-sm uppercase tracking-tight">Select Country</span>
+                    </div>
+                    <ChevronDown size={14} className="text-slate-300" />
+                  </div>
                 </div>
-              </div>
-              <div className="space-y-3">
-                <p className="t-label text-[10px] text-slate-400">Set Date</p>
-                <div className="flex items-center gap-3 text-slate-900 font-bold border-b border-slate-200 pb-2">
-                  <Calendar size={18} className="text-blue-600" />
-                  <span>Choose Timeline</span>
+              </Link>
+              <Link href="/travel/book-now" className="group/item">
+                <div className="space-y-3">
+                  <p className="t-label text-[10px] text-slate-400 group-hover/item:text-blue-600 transition-colors uppercase font-bold tracking-widest">Set Date</p>
+                  <div className="flex items-center justify-between text-slate-900 font-bold border-b border-slate-200 pb-2 group-hover/item:border-blue-600 transition-all">
+                    <div className="flex items-center gap-3">
+                      <Calendar size={18} className="text-blue-600" />
+                      <span className="text-sm uppercase tracking-tight">Choose Timeline</span>
+                    </div>
+                    <ChevronDown size={14} className="text-slate-300" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">1</div>
+                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-100 font-black">1</div>
                 <div>
-                  <p className="text-sm font-black text-slate-900">Passenger</p>
-                  <p className="text-[10px] text-slate-400">Total family members</p>
+                  <p className="text-sm font-black text-slate-900 uppercase">Passenger</p>
+                  <p className="text-[9px] text-slate-400 uppercase tracking-widest font-black">Total family members</p>
                 </div>
               </div>
-              <Button size="lg" className="rounded-2xl px-10 bg-blue-600 text-white shadow-lg shadow-blue-100 group">
+              <Button href="/travel/book-now" size="lg" className="rounded-2xl px-10 bg-blue-600 text-white shadow-xl shadow-blue-100 group">
                 <span className="flex items-center gap-2">
                   Continue <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -114,15 +125,15 @@ export const HeroTravel = () => {
           </div>
 
           <div className="flex items-center gap-8 pt-4">
-            <button className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all">
-                <Play size={16} className="text-slate-900 group-hover:text-white fill-current" />
+            <Link href="/travel/book-now" className="flex items-center gap-3 group">
+              <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:shadow-lg group-hover:shadow-blue-100 transition-all">
+                <Play size={16} className="text-slate-900 group-hover:text-white fill-current translate-x-0.5" />
               </div>
-              <span className="text-sm font-bold text-slate-900">Watch Intro</span>
-            </button>
+              <span className="text-sm font-black text-slate-900 uppercase tracking-wider">Watch Intro</span>
+            </Link>
             <div className="h-8 w-[1px] bg-slate-200" />
-            <p className="text-xs text-slate-400 max-w-[200px]">
-              *Verified 100% legal immigration process for Canada & UK.
+            <p className="text-[10px] text-slate-400 max-w-[200px] font-bold uppercase tracking-widest leading-relaxed">
+              *Verified 100% legal immigration process for Canada & Australia.
             </p>
           </div>
         </ScrollReveal>

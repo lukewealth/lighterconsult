@@ -95,7 +95,7 @@ export const NavbarTravel = () => {
               )}
             </div>
           ))}
-          <Button size="sm" href="/consult/book" className="ml-4 bg-amber text-white rounded-xl shadow-xl shadow-amber-100 font-black px-8 border-none">
+          <Button size="sm" href="/travel/book-now" className="ml-4 bg-amber text-white rounded-xl shadow-xl shadow-amber-100 font-black px-8 border-none">
             GET STARTED
           </Button>
         </div>
@@ -146,7 +146,7 @@ export const NavbarTravel = () => {
             </div>
 
             <div className="mt-auto">
-              <Button size="xl" href="/consult/book" className="w-full bg-amber text-white rounded-2xl py-8 text-lg font-black" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button size="xl" href="/travel/book-now" className="w-full bg-amber text-white rounded-2xl py-8 text-lg font-black" onClick={() => setIsMobileMenuOpen(false)}>
                 GET STARTED NOW
               </Button>
             </div>

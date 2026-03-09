@@ -16,7 +16,7 @@ export const FinalCTAStripTravel = () => {
           <h2 className="t-display text-slate-900 mb-8 md:text-8xl uppercase tracking-tighter">
             TRAVEL IN <span className="text-blue-600">3–6 MONTHS</span>
           </h2>
-          <p className="t-body-lg text-slate-500 max-w-[640px] mx-auto mb-16">
+          <p className="t-body-lg text-slate-500 max-w-[640px] mx-auto mb-16 font-medium">
             Start your journey to Canada or Australia. You can come with your family members. Professional, fast, and 100% legal relocation solutions.
           </p>
           
@@ -27,8 +27,8 @@ export const FinalCTAStripTravel = () => {
               { icon: Home, label: "Live" },
               { icon: Users, label: "Family" }
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center gap-4 group">
-                <div className="w-16 h-16 rounded-3xl bg-white border border-slate-100 flex items-center justify-center text-blue-600 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+              <div key={i} className="flex flex-col items-center gap-4 group cursor-default">
+                <div className="w-16 h-16 rounded-3xl bg-white border border-slate-100 flex items-center justify-center text-blue-600 shadow-sm group-hover:bg-blue-600 group-hover:text-white group-hover:-translate-y-1 transition-all duration-500">
                   <item.icon size={28} />
                 </div>
                 <span className="text-xs font-black uppercase tracking-widest text-slate-400 group-hover:text-blue-600 transition-colors">{item.label}</span>
@@ -37,10 +37,10 @@ export const FinalCTAStripTravel = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6">
-            <Button size="xl" className="bg-blue-600 text-white shadow-xl shadow-blue-100 rounded-2xl px-20 font-black">
+            <Button href="/travel/book-now" size="xl" className="bg-blue-600 text-white shadow-xl shadow-blue-100 rounded-2xl px-20 font-black uppercase">
               BOOK NOW
             </Button>
-            <Button variant="secondary" size="xl" className="rounded-2xl px-12 border-slate-200 text-slate-900 hover:bg-slate-100">
+            <Button variant="secondary" size="xl" className="rounded-2xl px-12 border-slate-200 text-slate-900 hover:bg-slate-100 font-black">
               Call +234 707 059 9190
             </Button>
           </div>
