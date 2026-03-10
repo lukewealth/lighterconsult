@@ -99,7 +99,7 @@ export const HeroMain = () => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="max-w-[1400px] mx-auto px-6 w-full z-20 relative pt-32 pb-12">
+        <div className="max-w-[1400px] mx-auto px-6 w-full z-20 relative pt-24 pb-8 md:pt-32 md:pb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
               <AnimatePresence mode="wait">
@@ -109,7 +109,7 @@ export const HeroMain = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 30 }}
                   transition={{ duration: 0.6, ease: "circOut" }}
-                  className="flex flex-col gap-8"
+                  className="flex flex-col gap-6 md:gap-8"
                 >
                   <div className="flex items-center gap-4">
                     <motion.span 
@@ -118,14 +118,14 @@ export const HeroMain = () => {
                       className="h-[2px] bg-blue-600" 
                     />
                     <span className={cn(
-                      "t-label tracking-[4px] font-black",
+                      "t-label tracking-[2px] md:tracking-[4px] font-black",
                       slides[current].theme === 'amber' ? 'text-amber' : 'text-blue-600'
                     )}>
                       {slides[current].eyebrow}
                     </span>
                   </div>
 
-                  <h1 className="text-slate-900 font-display font-black text-6xl md:text-8xl leading-[0.9] tracking-tighter m-0">
+                  <h1 className="t-display m-0">
                     {slides[current].title}
                   </h1>
 
@@ -137,21 +137,21 @@ export const HeroMain = () => {
                     {slides[current].description}
                   </p>
 
-                  <div className="flex flex-wrap gap-6 mt-4">
+                  <div className="flex flex-wrap gap-4 md:gap-6 mt-4">
                     <Button 
                       variant="primary" 
                       size="xl" 
                       href={slides[current].href1} 
                       className={cn(
-                        "rounded-2xl px-12 text-white font-black shadow-2xl transition-transform hover:scale-105",
+                        "rounded-2xl px-8 md:px-12 text-white font-black shadow-2xl transition-transform hover:scale-105",
                         slides[current].theme === 'amber' ? 'bg-amber shadow-amber-100' : 'bg-blue-600 shadow-blue-100'
                       )}
                     >
                       {slides[current].cta1}
                     </Button>
                     <button className="flex items-center gap-4 group cursor-pointer">
-                      <div className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:border-slate-900 transition-all duration-500 shadow-sm">
-                        <Play size={18} className="text-slate-900 group-hover:text-white fill-current" />
+                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:border-slate-900 transition-all duration-500 shadow-sm">
+                        <Play size={16} className="text-slate-900 group-hover:text-white fill-current md:size-[18px]" />
                       </div>
                       <span className="t-label text-slate-900 font-black group-hover:text-blue-600 transition-colors">WATCH INTRO</span>
                     </button>

@@ -23,10 +23,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const sizes = {
-      sm: "px-7 py-2.5 text-[13px]",
-      md: "px-9 py-3.5 text-[14px]",
-      lg: "px-11 py-4 text-[14px]",
-      xl: "px-16 py-5 text-[15px]",
+      sm: "px-5 py-2 md:px-7 md:py-2.5 text-[12px] md:text-[13px]",
+      md: "px-7 py-3 md:px-9 md:py-3.5 text-[13px] md:text-[14px]",
+      lg: "px-8 py-3.5 md:px-11 md:py-4 text-[13px] md:text-[14px]",
+      xl: "px-10 py-4 md:px-16 md:py-5 text-[14px] md:text-[15px]",
     };
 
     const classes = cn(

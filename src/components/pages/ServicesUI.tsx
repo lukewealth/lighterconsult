@@ -14,6 +14,7 @@ import {
   Smartphone
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const mainServices = [
   {
@@ -76,13 +77,13 @@ export const ServicesUI = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-40 pb-24 px-6 bg-slate-50 overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-600/5 -skew-x-12 translate-x-20" />
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 px-6 bg-slate-50 overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-600/5 -skew-x-12 translate-x-20 hidden md:block" />
         <div className="max-w-[1200px] mx-auto relative z-10">
           <ScrollReveal>
             <span className="t-label text-blue-600 mb-6 block tracking-[4px]">OUR SOLUTIONS</span>
-            <h1 className="t-display text-slate-900 mb-8 md:text-8xl">Full-Stack<br/><span className="text-blue-600 italic font-serif">Services.</span></h1>
-            <p className="t-body-lg text-slate-500 max-w-[640px]">
+            <h1 className="t-display text-slate-900 mb-8 uppercase tracking-tighter">Full-Stack<br/><span className="text-blue-600 italic font-serif lowercase">Services.</span></h1>
+            <p className="t-body-lg text-slate-500 max-w-[640px] font-medium leading-relaxed">
               LiGHTER provides integrated solutions across digital growth and global mobility. We combine strategy, technology, and legal expertise.
             </p>
           </ScrollReveal>
@@ -90,42 +91,42 @@ export const ServicesUI = () => {
       </section>
 
       {/* Main Service Pillars */}
-      <section className="py-24 px-6">
-        <div className="max-w-[1200px] mx-auto flex flex-col gap-32">
+      <section className="py-20 md:py-24 px-6">
+        <div className="max-w-[1200px] mx-auto flex flex-col gap-24 md:gap-32">
           {mainServices.map((service, i) => (
-            <div key={service.id} className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${i % 1 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-              <ScrollReveal direction={i % 2 === 0 ? "left" : "right"}>
-                <div className={`w-20 h-20 rounded-[32px] ${service.bg} flex items-center justify-center mb-8 shadow-sm`}>
-                  <service.icon size={36} className={service.color} />
+            <div key={service.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <ScrollReveal direction={i % 2 === 0 ? "left" : "right"} className={i % 2 === 1 ? "lg:order-2" : ""}>
+                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-[24px] md:rounded-[32px] ${service.bg} flex items-center justify-center mb-6 md:mb-8 shadow-sm`}>
+                  <service.icon size={28} className={`${service.color} md:size-[36px]`} />
                 </div>
-                <h2 className="t-h1 text-slate-900 mb-4">{service.title}</h2>
+                <h2 className="t-h1 text-slate-900 mb-4 uppercase tracking-tight">{service.title}</h2>
                 <p className="t-h3 text-blue-600 mb-6 font-medium italic font-serif">{service.subtitle}</p>
-                <p className="t-body-lg text-slate-500 mb-10">
+                <p className="t-body-lg text-slate-500 mb-10 font-medium">
                   {service.description}
                 </p>
                 
-                <div className="bg-slate-50 p-8 rounded-[40px] border border-slate-100 mb-10">
-                  <h4 className="text-slate-900 font-black uppercase tracking-widest text-xs mb-6 flex items-center gap-2">
-                    <BarChart3 size={16} className="text-blue-600" />
+                <div className="bg-slate-50 p-6 md:p-8 rounded-[32px] md:rounded-[40px] border border-slate-100 mb-10">
+                  <h4 className="text-slate-900 font-black uppercase tracking-widest text-[10px] mb-6 flex items-center gap-2">
+                    <BarChart3 size={14} className="text-blue-600" />
                     Business Use Cases
                   </h4>
                   <ul className="space-y-4">
                     {service.useCases.map((useCase, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-slate-600 font-bold text-sm">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                      <li key={idx} className="flex items-center gap-3 text-slate-600 font-bold text-xs md:text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
                         {useCase}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <Button href={service.href} variant="primary" size="lg" className="rounded-2xl px-12 text-white font-black border-none">
+                <Button href={service.href} variant="primary" size="lg" className="rounded-2xl px-10 md:px-12 text-white font-black border-none w-full sm:w-auto shadow-xl shadow-blue-100">
                   Learn More About {service.title.split(' ')[1]}
                 </Button>
               </ScrollReveal>
 
-              <ScrollReveal direction={i % 2 === 0 ? "right" : "left"} className="relative">
-                <div className="aspect-square bg-slate-100 rounded-[60px] overflow-hidden relative shadow-2xl shadow-blue-100 border-[12px] border-white group">
+              <ScrollReveal direction={i % 2 === 0 ? "right" : "left"} className={cn("relative", i % 2 === 1 ? "lg:order-1" : "")}>
+                <div className="aspect-square bg-slate-100 rounded-[40px] md:rounded-[60px] overflow-hidden relative shadow-2xl shadow-blue-100 border-[8px] md:border-[12px] border-white group">
                    <Image 
                      src={service.image} 
                      alt={service.title} 
@@ -138,10 +139,10 @@ export const ServicesUI = () => {
                 <motion.div 
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-10 -right-10 bg-white p-8 rounded-[32px] shadow-2xl border border-slate-50 z-20 hidden md:block"
+                  className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white p-6 md:p-8 rounded-[24px] md:rounded-[32px] shadow-2xl border border-slate-50 z-20 hidden sm:block"
                 >
-                  <p className="t-label text-blue-600 mb-2">Insight</p>
-                  <p className="text-slate-900 font-black text-xl leading-tight">Data-Driven<br/>Decisions</p>
+                  <p className="t-label text-blue-600 mb-2 text-[9px]">Insight</p>
+                  <p className="text-slate-900 font-black text-lg md:text-xl leading-tight uppercase tracking-tight">Data-Driven<br/>Decisions</p>
                 </motion.div>
               </ScrollReveal>
             </div>
@@ -150,22 +151,22 @@ export const ServicesUI = () => {
       </section>
 
       {/* Social Media Insights Strip */}
-      <section className="py-24 px-6 bg-slate-900 overflow-hidden relative">
+      <section className="py-20 md:py-24 bg-slate-900 overflow-hidden relative px-6">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         <div className="max-w-[1200px] mx-auto relative z-10">
-          <ScrollReveal className="text-center mb-16">
-            <span className="t-label text-blue-400 mb-4 block">SOCIAL MEDIA INSIGHTS</span>
-            <h2 className="t-h2 text-white">Dominate the Digital Landscape</h2>
+          <ScrollReveal className="text-center mb-12 md:mb-16">
+            <span className="t-label text-blue-400 mb-4 block tracking-[4px]">SOCIAL MEDIA INSIGHTS</span>
+            <h2 className="t-h2 text-white uppercase tracking-tight">Dominate the Digital Landscape</h2>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {insights.map((insight, i) => (
-              <ScrollReveal key={i} delay={i * 0.1} className="bg-white/5 border border-white/10 p-10 rounded-[40px] hover:bg-white/10 transition-all group">
-                <div className="w-14 h-14 rounded-2xl bg-blue-600/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  <insight.icon size={28} className="text-blue-400" />
+              <ScrollReveal key={i} delay={i * 0.1} className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-[32px] md:rounded-[40px] hover:bg-white/10 transition-all group">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-blue-600/20 flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+                  <insight.icon size={24} className="text-blue-400 md:size-[28px]" />
                 </div>
-                <h3 className="text-white font-black text-xl mb-4">{insight.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{insight.desc}</p>
+                <h3 className="text-white font-black text-lg md:text-xl mb-4 uppercase tracking-tight">{insight.title}</h3>
+                <p className="text-slate-400 text-xs md:text-sm leading-relaxed font-medium">{insight.desc}</p>
               </ScrollReveal>
             ))}
           </div>
@@ -173,12 +174,12 @@ export const ServicesUI = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 text-center">
+      <section className="py-20 md:py-24 px-6 text-center">
         <ScrollReveal>
-          <h2 className="t-h1 text-slate-900 mb-8">Ready to Start?</h2>
-          <div className="flex flex-wrap justify-center gap-6">
-            <Button href="/consult/book" variant="primary" size="xl" className="rounded-2xl px-16 text-white font-black border-none bg-amber shadow-amber-100">Consult</Button>
-            <Button href="/travel/book-now" variant="secondary" size="xl" className="rounded-2xl px-16 border-slate-200 text-slate-900 font-black">Travel</Button>
+          <h2 className="t-h1 text-slate-900 mb-8 uppercase tracking-tighter">Ready to Start?</h2>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+            <Button href="/consult/book" variant="primary" size="xl" className="rounded-2xl px-12 md:px-16 text-white font-black border-none bg-amber shadow-xl shadow-amber-100 w-full sm:w-auto">Consult</Button>
+            <Button href="/travel/book-now" variant="secondary" size="xl" className="rounded-2xl px-12 md:px-16 border-slate-200 text-slate-900 font-black w-full sm:w-auto">Travel</Button>
           </div>
         </ScrollReveal>
       </section>
