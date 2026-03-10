@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export const HeroConsult = () => {
   return (
-    <section className="relative h-svh w-full overflow-hidden flex items-center bg-consult-gradient">
+    <section className="relative min-h-svh w-full overflow-hidden flex items-center bg-consult-gradient py-20">
       {/* Animated Grid Overlay */}
       <div 
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -17,18 +17,18 @@ export const HeroConsult = () => {
         }}
       />
 
-      <div className="max-w-[1200px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
-        <div className="flex flex-col gap-6">
+      <div className="max-w-[1200px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center z-10">
+        <div className="flex flex-col gap-6 pt-12 md:pt-0">
           <motion.span
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="t-label text-sky tracking-[4px]"
+            className="t-label text-sky tracking-[2px] md:tracking-[4px]"
           >
             DIGITAL MARKETING AGENCY · LAGOS NIGERIA
           </motion.span>
 
-          <h1 className="text-white t-display leading-[0.9] tracking-[-4px]">
+          <h1 className="t-display text-white m-0">
             <motion.span
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -70,10 +70,10 @@ export const HeroConsult = () => {
             transition={{ delay: 1.3 }}
             className="flex flex-wrap gap-4 mt-4"
           >
-            <Button size="xl" className="bg-sky hover:bg-sky/80 text-white shadow-none">
-              Book a Free Strategy Call
+            <Button size="xl" className="bg-sky hover:bg-sky/80 text-white shadow-none w-full sm:w-auto">
+              Free Strategy Call
             </Button>
-            <Button variant="ghost" size="xl">
+            <Button variant="ghost" size="xl" className="w-full sm:w-auto">
               See Our Work
             </Button>
           </motion.div>
@@ -82,7 +82,7 @@ export const HeroConsult = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="text-gray-500 text-[13px] mt-4"
+            className="text-gray-500 text-[13px] mt-4 font-bold"
           >
             Trusted by 500+ brands across Nigeria and Africa
           </motion.p>
@@ -116,7 +116,7 @@ export const HeroConsult = () => {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: -2 }}
               className="absolute bottom-20 -right-8 bg-card border border-sky/20 p-6 rounded-xl shadow-2xl z-20"
             >
-              <span className="text-white font-bold block mb-2">Omni-channel</span>
+              <span className="text-white font-bold block mb-2 font-display uppercase tracking-widest text-xs">Omni-channel</span>
               <div className="flex gap-3 text-sky/60">
                 <span className="text-[10px] font-bold uppercase tracking-wider">Meta</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider">Google</span>
