@@ -8,8 +8,7 @@ import {
   PenTool, 
   Search, 
   MessageSquare, 
-  ArrowRight,
-  ChevronRight
+  ArrowRight
 } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -13,34 +13,34 @@ interface BookingFormProps {
 
 const BookingFormContent = ({ type }: BookingFormProps) => {
   const searchParams = useSearchParams();
-  const [step, setStep] = useState(1);
-  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
-  const totalSteps = 3;
-
-  useEffect(() => {
+  
+  // Pre-calculate initial state from search params to avoid setState in useEffect
+  const getInitialGoal = () => {
     const goal = searchParams.get('goal');
-    if (goal) {
-      const goals = type === "consult" 
-        ? ["ecommerce", "authority", "leadgen", "content"]
-        : ["study", "work", "residency", "business"];
-      
-      const goalMap: Record<string, string> = {
-        "ecommerce": "Scale E-commerce ROI",
-        "authority": "Build Brand Authority",
-        "leadgen": "Lead Generation Pipeline",
-        "content": "Content Engineering",
-        "study": "STUDY",
-        "work": "Work Permit Pathways",
-        "residency": "Permanent Residency",
-        "business": "Business Relocation"
-      };
+    if (!goal) return null;
 
-      if (goals.includes(goal)) {
-        setSelectedGoal(goalMap[goal]);
-        setStep(2);
-      }
-    }
-  }, [searchParams, type]);
+    const goalMap: Record<string, string> = {
+      "ecommerce": "Scale E-commerce ROI",
+      "authority": "Build Brand Authority",
+      "leadgen": "Lead Generation Pipeline",
+      "content": "Content Engineering",
+      "study": "STUDY",
+      "work": "Work Permit Pathways",
+      "residency": "Permanent Residency",
+      "business": "Business Relocation"
+    };
+
+    const validGoals = type === "consult" 
+      ? ["ecommerce", "authority", "leadgen", "content"]
+      : ["study", "work", "residency", "business"];
+
+    return validGoals.includes(goal) ? goalMap[goal] : null;
+  };
+
+  const initialGoal = getInitialGoal();
+  const [step, setStep] = useState(initialGoal ? 2 : 1);
+  const [selectedGoal, setSelectedGoal] = useState<string | null>(initialGoal);
+  const totalSteps = 3;
 
   return (
     <div className="bg-white border border-slate-100 p-8 md:p-12 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.06)] relative overflow-hidden">
