@@ -13,5 +13,7 @@ const login = async (credentials) => ({ success: true, token: 'mock-token' });
 const logout = async () => ({ success: true });
 const getUserProfile = async () => ({ id: '123', name: 'User' });
 
-export default api;
-export { login, logout, getUserProfile };
+module.exports = api;
+module.exports.login = login;
+module.exports.logout = logout;
+module.exports.getUserProfile = getUserProfile;
